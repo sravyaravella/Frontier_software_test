@@ -4,11 +4,17 @@
 make sravya_robot
 ./sravya_robot
 
-Enter your inputs and Type 'exit' to stop the program.
-
 Any supported IDE can also be used to run the program.
 
+Enter your input for the Robot. Type 'exit' to stop the program:
+Accepeted Input actions: 
+1. place(<int>,<int>,<facing>) or place(<int>,<int>,'<facing>')
+2. move() or move
+3. left() or left
+4. right() or right
+5. report() or report
 
+Sample Input/Output: 
  % ./sravya_robot
 Enter your input for the Robot. Type 'exit' to stop the program:
 place(1,4,south)
@@ -36,4 +42,4 @@ I have added multiple comments in each part for easier understanding.
 
 
 
- Thank you.
+Thank you.

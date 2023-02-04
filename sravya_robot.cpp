@@ -1,9 +1,10 @@
 #include <iostream>
 #include <string>
+#include <algorithm>
 #include <regex>
 using namespace std;
 const int max_width=5,max_length=5;
-//Maximum width and Maximum length of the table  top.Modify this to increase the size of the grid
+//Maximum width and Maximum length of the table  top. Modify this to increase the size of the grid
 class Robot {
 public:
     int x, y;
@@ -119,23 +120,24 @@ public:
 };
 
 int main() {
-    cout << "Enter your input for the Robot. Type 'exit' to stop the program:" << endl;
+    cout << "Enter your input for the Robot. Type 'exit' to stop the program:\n Accepeted Input actions: \n1. place(<int>,<int>,<facing>) \t 2. move() \t 3. left() \t 4. right() \t 5. report() "<<endl;
+   
     string input; //Case-insensitive input
     Robot rb;
-    while (cin >> input && input != "exit") {
+    while (getline(cin,input) && input != "exit") {
         int l = input.size();
         for (int i = 0; i < l; i++) input[i] = toupper(input[i]); //Converting the given input to Uppercase
-        if (input.find("MOVE") != string::npos) rb.move(); //input accepts move and move(), checking if the given instruction is to move the robot and calling the move() funtcion.
-        else if (input.find("LEFT") != string::npos) rb.left();//input accepts left and left(), checking if the given instruction is to turn left  and calling the left() funtcion.
-        else if (input.find("RIGHT") != string::npos) rb.right();//input accepts right and right(), checking if the given instruction is to right and calling the right() funtcion.
-        else if (input.find("REPORT") != string::npos) rb.report();//input accepts report and report(), checking if the given instruction is to report the location and calling report().
+        if (input=="MOVE"|| input=="MOVE()") rb.move(); //input accepts move and move(), checking if the given instruction is to move the robot and calling the move() funtcion.
+        else if (input=="LEFT"|| input=="LEFT()") rb.left();//input accepts left and left(), checking if the given instruction is to turn left  and calling the left() funtcion.
+        else if (input=="RIGHT"|| input=="RIGHT()") rb.right();//input accepts right and right(), checking if the given instruction is to right and calling the right() funtcion.
+        else if (input=="REPORT"|| input=="REPORT()") rb.report();//input accepts report and report(), checking if the given instruction is to report the location and calling report().
         else if (input.find("PLACE") != string::npos) { //if the input is to place the robot at given location
            /* int width = input[6] - 48;
             int length = input[8] - 48;
             string dir = input.substr(11, 5);*/
-			regex pattern("PLACE\\((\\d)\\s?,\\s?(\\d)\\s?,\\s?'?([A-Z]+)'?\\)"); //using regex for pattern matching (place(1,2,'south'),  matches[0] contains PLACE
+			regex pattern("PLACE\\(\\s?(\\d+)\\s?,\\s?(\\d+)\\s?,\\s?'?([A-Z]+)'?\\s?\\)"); //using regex: PLACE\((\d+)\s?,\s?(\d+)\s?,\s?'?([A-Z]+)'?\s?\) for pattern matching (place(1,2,'south'),  matches[0] contains PLACE
 			smatch matches;
-			if (regex_search(input, matches, pattern) && matches.size() >= 4) {
+			if (regex_match(input, matches, pattern)   && matches.size() >= 4) {
     			int width = stoi(matches[1].str());  //matches[1] & matches[2] contains width & height respectively>>matching pattern: \d
     			int length = stoi(matches[2].str());
     			string dir = matches[3].str(); //matches[3] contains given direction >>matching pattern : '?([A-Z]+)'
