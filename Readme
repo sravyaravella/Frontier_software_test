@@ -1,0 +1,39 @@
+1. Copy the file into your folder
+2. Go to the path containing sravya_robot.cpp file and then Compile and run C++ program in a Terminal using:
+
+make sravya_robot
+./sravya_robot
+
+Enter your inputs and Type 'exit' to stop the program.
+
+Any supported IDE can also be used to run the program.
+
+
+ % ./sravya_robot
+Enter your input for the Robot. Type 'exit' to stop the program:
+place(1,4,south)
+Placed Robot at give location:1,4,SOUTH
+move
+Moved robot one step towards SOUTH
+move
+Moved robot one step towards SOUTH
+report
+Robot is at location:1,2,SOUTH
+ --- --- --- --- ---
+|   |   |   |   |   |4
+ --- --- --- --- ---
+|   |   |   |   |   |3
+ --- --- --- --- ---
+|   | * |   |   |   |2
+ --- --- --- --- ---
+|   |   |   |   |   |1
+ --- --- --- --- ---
+|   |   |   |   |   |0
+ --- --- --- --- ---
+  0   1   2   3   4 
+
+I have added multiple comments in each part for easier understanding.
+
+
+
+ Thank you.
