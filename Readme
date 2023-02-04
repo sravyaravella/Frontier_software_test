@@ -1,4 +1,4 @@
-1. Copy the file into your folder
+1. Copy the sravya_robot.cpp file into your folder
 2. Go to the path containing sravya_robot.cpp file and then Compile and run C++ program in a Terminal using:
 
 make sravya_robot
